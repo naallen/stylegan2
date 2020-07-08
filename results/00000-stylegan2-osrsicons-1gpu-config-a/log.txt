@@ -1,0 +1,79 @@
+dnnlib: Running training.training_loop.training_loop() on localhost...
+C:\Python37\lib\site-packages\tensorflow\python\framework\dtypes.py:516: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+C:\Python37\lib\site-packages\tensorflow\python\framework\dtypes.py:517: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+C:\Python37\lib\site-packages\tensorflow\python\framework\dtypes.py:518: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+C:\Python37\lib\site-packages\tensorflow\python\framework\dtypes.py:519: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+C:\Python37\lib\site-packages\tensorflow\python\framework\dtypes.py:520: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+C:\Python37\lib\site-packages\tensorflow\python\framework\dtypes.py:525: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+C:\Python37\lib\site-packages\tensorboard\compat\tensorflow_stub\dtypes.py:541: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+C:\Python37\lib\site-packages\tensorboard\compat\tensorflow_stub\dtypes.py:542: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+C:\Python37\lib\site-packages\tensorboard\compat\tensorflow_stub\dtypes.py:543: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+C:\Python37\lib\site-packages\tensorboard\compat\tensorflow_stub\dtypes.py:544: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+C:\Python37\lib\site-packages\tensorboard\compat\tensorflow_stub\dtypes.py:545: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+C:\Python37\lib\site-packages\tensorboard\compat\tensorflow_stub\dtypes.py:550: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+Streaming data using training.dataset.TFRecordDataset...
+Dataset shape = [3, 64, 64]
+Dynamic range = [0, 255]
+Label size    = 0
+Constructing networks...
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\tensorflow\python\client\session.py", line 1356, in _do_call
+    return fn(*args)
+  File "C:\Python37\lib\site-packages\tensorflow\python\client\session.py", line 1341, in _run_fn
+    options, feed_dict, fetch_list, target_list, run_metadata)
+  File "C:\Python37\lib\site-packages\tensorflow\python\client\session.py", line 1429, in _call_tf_sessionrun
+    run_metadata)
+tensorflow.python.framework.errors_impl.InvalidArgumentError: Cannot assign a device for operation G_synthesis/lod: {{node G_synthesis/lod}}was explicitly assigned to /device:GPU:0 but available devices are [ /job:localhost/replica:0/task:0/device:CPU:0 ]. Make sure the device specification refers to a valid device. The requested device appears to be a GPU, but CUDA is not enabled.
+	 [[G_synthesis/lod]]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "run_training.py", line 192, in <module>
+    main()
+  File "run_training.py", line 187, in main
+    run(**vars(args))
+  File "run_training.py", line 120, in run
+    dnnlib.submit_run(**kwargs)
+  File "F:\Media\Workshop\osrsstylegan\stylegan2\dnnlib\submission\submit.py", line 343, in submit_run
+    return farm.submit(submit_config, host_run_dir)
+  File "F:\Media\Workshop\osrsstylegan\stylegan2\dnnlib\submission\internal\local.py", line 22, in submit
+    return run_wrapper(submit_config)
+  File "F:\Media\Workshop\osrsstylegan\stylegan2\dnnlib\submission\submit.py", line 280, in run_wrapper
+    run_func_obj(**submit_config.run_func_kwargs)
+  File "F:\Media\Workshop\osrsstylegan\stylegan2\training\training_loop.py", line 149, in training_loop
+    G = tflib.Network('G', num_channels=training_set.shape[0], resolution=training_set.shape[1], label_size=training_set.label_size, **G_args)
+  File "F:\Media\Workshop\osrsstylegan\stylegan2\dnnlib\tflib\network.py", line 97, in __init__
+    self._init_graph()
+  File "F:\Media\Workshop\osrsstylegan\stylegan2\dnnlib\tflib\network.py", line 154, in _init_graph
+    out_expr = self._build_func(*self.input_templates, **build_kwargs)
+  File "F:\Media\Workshop\osrsstylegan\stylegan2\training\networks_stylegan.py", line 333, in G_style
+    components.synthesis = tflib.Network('G_synthesis', func_name=G_synthesis, **kwargs)
+  File "F:\Media\Workshop\osrsstylegan\stylegan2\dnnlib\tflib\network.py", line 98, in __init__
+    self.reset_own_vars()
+  File "F:\Media\Workshop\osrsstylegan\stylegan2\dnnlib\tflib\network.py", line 189, in reset_own_vars
+    tfutil.run([var.initializer for var in self.own_vars.values()])
+  File "F:\Media\Workshop\osrsstylegan\stylegan2\dnnlib\tflib\tfutil.py", line 31, in run
+    return tf.get_default_session().run(*args, **kwargs)
+  File "C:\Python37\lib\site-packages\tensorflow\python\client\session.py", line 950, in run
+    run_metadata_ptr)
+  File "C:\Python37\lib\site-packages\tensorflow\python\client\session.py", line 1173, in _run
+    feed_dict_tensor, options, run_metadata)
+  File "C:\Python37\lib\site-packages\tensorflow\python\client\session.py", line 1350, in _do_run
+    run_metadata)
+  File "C:\Python37\lib\site-packages\tensorflow\python\client\session.py", line 1370, in _do_call
+    raise type(e)(node_def, op, message)
+tensorflow.python.framework.errors_impl.InvalidArgumentError: Cannot assign a device for operation G_synthesis/lod: node G_synthesis/lod (defined at F:\Media\Workshop\osrsstylegan\stylegan2\training\networks_stylegan.py:478) was explicitly assigned to /device:GPU:0 but available devices are [ /job:localhost/replica:0/task:0/device:CPU:0 ]. Make sure the device specification refers to a valid device. The requested device appears to be a GPU, but CUDA is not enabled.
+	 [[G_synthesis/lod]]
